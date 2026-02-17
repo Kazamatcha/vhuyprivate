@@ -19283,7 +19283,7 @@ do
     local fov_circle_outline = nil
     local shoot = nil
 
-    do
+    --[[do
         for _, new_upvalue in getupvalues(rawget(require(replicated_storage["Modules"]["GunHandler"]), "shoot")) do
             if type(new_upvalue) == "function" and getinfo(new_upvalue) and getinfo(new_upvalue)["name"] == "shoot" then
                 shoot = new_upvalue
@@ -19295,7 +19295,7 @@ do
             local_player:Kick("Please rejoin.")
             return
         end
-    end
+    end]]
 
     local get_closest_to_mouse_position = LPH_NO_VIRTUALIZE(function(dt, hrp)
         local mouse_pos = get_mouse_location(user_input_service)
