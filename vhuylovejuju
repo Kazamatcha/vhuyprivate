@@ -332,7 +332,7 @@ do
                 ["jaydes.png"] = function() return game:HttpGet("https://github.com/xander-999/juju/raw/refs/heads/main/jaydes.png") end,
                 ["1.png"] = function() return game:HttpGet("https://github.com/xander-999/juju/raw/refs/heads/main/1.png") end,
                 ["2.png"] = function() return game:HttpGet("https://github.com/xander-999/juju/raw/refs/heads/main/2.png") end,
-                ["logo.png"] = function() return game:HttpGet("https://github.com/xander-999/juju/raw/refs/heads/main/logo.png") end,
+                ["logo.png"] = function() return game:HttpGet("https://github.com/Kazamatcha/vhuyprivate/raw/refs/heads/main/logo.png") end,
                 ["saturation.png"] = function() return game:HttpGet("https://github.com/xander-999/juju/raw/refs/heads/main/saturation.png") end,
             },
             ["custom"] = {
