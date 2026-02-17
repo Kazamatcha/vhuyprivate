@@ -1,0 +1,5 @@
+if game.PlaceId == 2788229376 then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kazamatcha/vhuyprivate/refs/heads/main/vhuydahood"))()
+else
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kazamatcha/vhuyprivate/refs/heads/main/vhuylovejuju"))()
+end
