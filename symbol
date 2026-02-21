@@ -16881,7 +16881,7 @@ do
                     indicatorLabel.Position = UDim2.new(0.5, 0, 0, 0)
                     indicatorLabel.Size = UDim2.new(1, 0, 1, 0)
                     indicatorLabel.AnchorPoint = Vector2.new(0.5, 0)
-                    indicatorLabel.Text = 'symbol'
+                    indicatorLabel.Text = 'van huy'
                     indicatorLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
                     indicatorLabel.TextSize = 13
                     indicatorLabel.TextStrokeTransparency = 0.1
@@ -18790,8 +18790,8 @@ pcall(function()
 end)
 
 local win = lib:Window({
-    name = 'symbol',
-    size = UDim2.fromOffset(750, 599),
+    name = 'vanhuy v3',
+    size = UDim2.fromOffset(700, 590),
     open = true,
     fontsize = 20,
 })
@@ -21778,7 +21778,7 @@ do
 
     spoof_popup:Textbox({
         name = 'server region',
-        value = 'Symbol',
+        value = 'Vanhuy v3',
         placeholder = 'Enter server region...',
         callback = function(v)
             lib.Flags.hudchanger_server_name = v
@@ -23906,7 +23906,7 @@ do
     local watermarkPopup = watermarkToggle:Popup({size = 200})
 
     local function updateWatermark()
-        local text = 'symbol'
+        local text = 'vanhuyv3'
         local types = lib.Flags.watermark_types
 
         if types and #types > 0 then
