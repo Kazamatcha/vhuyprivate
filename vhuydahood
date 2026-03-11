@@ -325,7 +325,6 @@ end
 local menu = {
     on_config_loaded = signal["new"](),
 	accent = color3_fromrgb(254, 230, 254),
-	
 	colors = {
 	    ["shadow"] = color3_fromrgb(254, 230, 254),
 	    ["accent"] = color3_fromrgb(254, 230, 254),
@@ -387,7 +386,7 @@ do
                 ["spam.json"] = function() return game:HttpGet("https://github.com/hncddrtggqazcrezggs/juju/raw/refs/heads/main/spam.json") end,
             },
             ["themes"] = {
-                ["default.th"] = function() return game:HttpGet("https://github.com/hncddrtggqazcrezggs/juju/raw/refs/heads/main/default.th") end,
+                ["default.th"] = function() return game:HttpGet("https://raw.githubusercontent.com/Kazamatcha/vhuyprivate/refs/heads/main/default.th") end,
             },
             ["addons"] = {},
             ["configs"] = {},
@@ -10680,7 +10679,7 @@ do
                 local crew = find_first_child(information, "Crew")
 
                 if crew and #crew["Value"] ~= 0 then
-                    setclipboard("https://www.roblox.com/communities/"..crew["Value"].."#!/juju")
+                    setclipboard("https://www.roblox.com/communities/"..crew["Value"].."#!/bunny")
 
                     new_notification(
                         "copied "..selected_player["Name"].."'s crew group link to your clipboard",
@@ -10698,7 +10697,7 @@ do
 
     create_connection(player_editor:create_element({["name"] = "copy profile link"}, {["button"] = {}})["on_clicked"], function()
         if selected_player then
-            setclipboard("https://www.roblox.com/users/"..selected_player["UserId"].."/profile#!/juju")
+            setclipboard("https://www.roblox.com/users/"..selected_player["UserId"].."/profile#!/bunny")
             new_notification(
                 "copied "..selected_player["Name"].."'s profile link to your clipboard",
                 1
