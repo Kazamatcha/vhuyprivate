@@ -1,0 +1,40 @@
+do
+	local mainFolder = "bunny recode"
+	local configFolder = mainFolder.."/configs"
+	
+	-- tạo folder nếu chưa có
+	if not isfolder(mainFolder) then
+	    makefolder(mainFolder)
+	end
+	
+	if not isfolder(configFolder) then
+	    makefolder(configFolder)
+	end
+	
+	-- danh sách file github muốn tải
+	local files = {
+	    {
+	        url = "https://raw.githubusercontent.com/Kazamatcha/vhuyprivate/refs/heads/main/kingbunnylegit.cfg",
+	        name = "kingbunnylegit.cfg"
+	    },
+	
+	    -- sau này chỉ cần thêm ở đây
+	    --{
+	    --    url = "LINK_RAW_FILE",
+	    --    name = "tenfile.cfg"
+	    --}
+	}
+	
+	-- tải file nếu chưa tồn tại
+	for _, file in ipairs(files) do
+	    local path = configFolder.."/"..file.name
+	
+	    if not isfile(path) then
+	        local data = game:HttpGet(file.url)
+	        writefile(path, data)
+	        print("Downloaded:", file.name)
+	    else
+	        print("File already exists:", file.name)
+	    end
+	end
+end
