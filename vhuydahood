@@ -345,7 +345,7 @@ local menu = {
 	    ["juju"] = color3_fromrgb(255, 182, 193),
 	    ["build"] = color3_fromrgb(255, 182, 193),
 	    ["cursor"] = color3_fromrgb(255, 182, 193),
-	}
+	},
     settings = {},
     notifications = {},
     groups = {},
