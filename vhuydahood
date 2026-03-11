@@ -16,7 +16,7 @@ if not LPH_OBFUSCATED then
     LPH_JIT = function(...) return ... end
 end
 
-getgenv()["juju"] = {}
+getgenv()["bunny"] = {}
 
 -- > ( bypass )
 
@@ -341,7 +341,7 @@ local menu = {
 	    ["error"] = color3_fromrgb(255, 170, 210),
 	    ["alert"] = color3_fromrgb(120, 80, 120),
 	    ["logo"] = color3_fromrgb(254, 230, 254),
-	    ["juju"] = color3_fromrgb(254, 230, 254),
+	    ["bunny"] = color3_fromrgb(254, 230, 254),
 	    ["build"] = color3_fromrgb(254, 230, 254),
 	    ["cursor"] = color3_fromrgb(254, 230, 254),
 	},
@@ -6848,7 +6848,7 @@ do
                     ["confirmation"] = true
                 },
             })["on_clicked"], function()
-                getgenv()["_juju"]()
+                getgenv()["_bunny"]()
 
                 if (identifyexecutor() == "AWP" or identifyexecutor() == "Nihon") then
                     cleardrawcache()
@@ -6904,13 +6904,13 @@ do
                 ["name"] = "juju color",
             }, {
                 ["colorpicker"] = {
-                    ["default_color"] = menu["colors"]["juju"],
+                    ["default_color"] = menu["colors"]["bunny"],
                     ["default_transparency"] = 0,
                     ["transparency_flag"] = "!juju_transparency",
                     ["color_flag"] = "!juju_color"
                 }
             })["on_color_change"], function(color)
-                menu["colors"]["juju"] = color
+                menu["colors"]["bunny"] = color
                 juju_text["Color"] = color
             end)
 
@@ -7992,7 +7992,7 @@ do
     -- > ( loading / unloading )
 
     do
-        local unload = getgenv()["_juju"]
+        local unload = getgenv()["_bunny"]
 
         if unload then
             unload()
@@ -8014,8 +8014,8 @@ do
 
         getrawmetatable = env["getrawmetatable"]
 
-        env["_juju"] = function()
-            env["_juju"] = nil
+        env["_bunny"] = function()
+            env["_bunny"] = nil
 
             for _, group in menu["groups"] do
                 for _, tab in group["tabs"] do
@@ -10413,7 +10413,7 @@ do
             end
             if do_kick then
                 local_player:Kick("[juju anti staff]\n > detected "..player.." roled as "..role)
-                delay(0, getgenv()["_juju"])
+                delay(0, getgenv()["_bunny"])
             end
         end
     end
@@ -14020,7 +14020,7 @@ do
         delfile(path)
     end
 
-    local hit_sound_data = hit_sounds["juju"]
+    local hit_sound_data = hit_sounds["bunny"]
 
     local do_hit_sound = function()
         delay(0, destroy, create_instance("Sound", {
@@ -22833,7 +22833,7 @@ do
             end
         }
 
-        getgenv()["juju"]["add_control_command"] = function(name, callback)
+        getgenv()["bunny"]["add_control_command"] = function(name, callback)
             local type1 = type(name)
 
             if type1 ~= "string" then
@@ -22856,7 +22856,7 @@ do
             commands[name] = callback
         end
 
-        getgenv()["juju"]["remove_control_command"] = function(name)
+        getgenv()["bunny"]["remove_control_command"] = function(name)
             local type1 = type(name)
 
             if type1 ~= "string" then
@@ -24158,7 +24158,7 @@ do
         local backtrack_transparency = flags["backtrack_transparency"]
         backtrack_data = {}
 
-        getgenv()["juju"]["get_backtrack_position"] = LPH_JIT_MAX(function(player)
+        getgenv()["bunny"]["get_backtrack_position"] = LPH_JIT_MAX(function(player)
             local type = typeof(player)
 
             if type ~= "Instance" then
@@ -24736,7 +24736,7 @@ do
 
     local typeof = typeof
     local g = menu["get_active_binds"]
-    local old = getgenv()["juju"]
+    local old = getgenv()["bunny"]
     local new = {
         create_connection = function(signal, callback)
             local type = typeof(signal)
@@ -25378,7 +25378,7 @@ do
     for name, func in old do
         new[name] = func
     end
-    getgenv()["juju"] = new
+    getgenv()["bunny"] = new
 end
 
 -- > ( finish loading )
