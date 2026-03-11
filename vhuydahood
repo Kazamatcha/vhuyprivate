@@ -1,3 +1,5 @@
+--> dont make key sys pls
+
 repeat task["wait"]() until game:IsLoaded()
 
 if (identifyexecutor() == "AWP" or identifyexecutor() == "Nihon") then
@@ -371,7 +373,7 @@ do
                 ["jaydes.png"] = function() return game:HttpGet("https://github.com/hncddrtggqazcrezggs/juju/raw/refs/heads/main/jaydes.png") end,
                 ["1.png"] = function() return game:HttpGet("https://github.com/hncddrtggqazcrezggs/juju/raw/refs/heads/main/1.png") end,
                 ["2.png"] = function() return game:HttpGet("https://github.com/hncddrtggqazcrezggs/juju/raw/refs/heads/main/2.png") end,
-                ["logo.png"] = function() return game:HttpGet("https://github.com/hncddrtggqazcrezggs/juju/raw/refs/heads/main/logo.png") end,
+                ["logo.png"] = function() return game:HttpGet("https://raw.githubusercontent.com/Kazamatcha/vhuyprivate/refs/heads/main/bunny.png") end,
                 ["saturation.png"] = function() return game:HttpGet("https://github.com/hncddrtggqazcrezggs/juju/raw/refs/heads/main/saturation.png") end,
             },
             ["custom"] = {
@@ -391,8 +393,9 @@ do
             ["data.dat"] = [[{"notifications":true,"theme":"","favorites":[]}]]
         }
 
-        if not isfolder("vhuylovejuju") then
-            makefolder("vhuylovejuju")
+
+        if not isfolder("bunny recode") then
+            makefolder("bunny recode")
         end
 
         local recursive_check
@@ -413,14 +416,14 @@ do
             end
         end
 
-        recursive_check("vhuylovejuju/", files)
+        recursive_check("bunny recode/", files)
     end
 
     -- > ( custom drawing )
 
     local drawing = Drawing
     LPH_NO_VIRTUALIZE(function()
-        drawing = loadstring(game:HttpGet("https://raw.githubusercontent.com/hncddrtggqazcrezggs/juju/refs/heads/main/api.lua"))()
+        drawing = loadstring(game:HttpGet("https://raw.githubusercontent.com/khenn791/lmao/refs/heads/main/api.lua"))()
     end)()
 
     getgenv()["fake_drawing"] = drawing
@@ -721,7 +724,7 @@ do
 
     local logo = drawing_proxy["new"]("Image", {
         ["Color"] = menu["colors"]["accent"],
-        ["Data"] = readfile("vhuylovejuju/assets/logo.png"),
+        ["Data"] = readfile("bunny recode/assets/logo.png"),
         ["Position"] = udim2_new(0, 15, 0, 15),
         ["Parent"] = inside,
         ["Size"] = udim2_new(0, 35, 0, 35),
@@ -732,7 +735,7 @@ do
     local juju_text = drawing_proxy["new"]("Text", {
         ["Font"] = 1,
         ["Color"] = color3_fromrgb(255, 255, 255),
-        ["Text"] = "vhuy",
+        ["Text"] = "bunny",
         ["Parent"] = logo,
         ["Position"] = udim2_new(1, 5, 0, 3),
         ["Size"] = 14,
@@ -1168,7 +1171,7 @@ do
 
     function menu:load_theme(theme)
         if theme then
-            local path = "vhuylovejuju/themes/"..theme..".th"
+            local path = "bunny recode/themes/"..theme..".th"
             if isfile(path) then
                 local s, data = pcall(function()
                     return http_service:JSONDecode(readfile(path))
@@ -1677,7 +1680,7 @@ do
 
         if menu["saved"] then
             menu["saved"] = false
-            writefile("vhuylovejuju/data.dat", http_service:JSONEncode({
+            writefile("bunny recode/data.dat", http_service:JSONEncode({
                 ["notifications"] = do_notifications,
                 ["favorites"] = menu["favorites"],
                 ["theme"] = menu["theme"],
@@ -2502,7 +2505,7 @@ do
                     active["favorited"] = true
                     active["parent"]:add_icon(active["drawings"]["text"]["Text"], star)
 
-                    writefile("vhuylovejuju/data.dat", http_service:JSONEncode({
+                    writefile("bunny recode/data.dat", http_service:JSONEncode({
                         ["notifications"] = do_notifications,
                         ["favorites"] = menu["favorites"],
                         ["theme"] = menu["theme"],
@@ -2527,7 +2530,7 @@ do
                     active["parent"]:remove_icon(active["drawings"]["text"]["Text"], star)
                     menu["saved"] = true
 
-                    writefile("vhuylovejuju/data.dat", http_service:JSONEncode({
+                    writefile("bunny recode/data.dat", http_service:JSONEncode({
                         ["notifications"] = do_notifications,
                         ["favorites"] = menu["favorites"],
                         ["theme"] = menu["theme"],
@@ -2630,7 +2633,7 @@ do
 
                     active["parent"]:add_icon(active["drawings"]["text"]["Text"], autoload)
 
-                    writefile("vhuylovejuju/data.dat", http_service:JSONEncode({
+                    writefile("bunny recode/data.dat", http_service:JSONEncode({
                         ["notifications"] = do_notifications,
                         ["favorites"] = menu["favorites"],
                         ["theme"] = menu["theme"],
@@ -2654,7 +2657,7 @@ do
                     menu["saved"] = true
                     active["parent"]:remove_icon(active["drawings"]["text"]["Text"], autoload)
 
-                    writefile("vhuylovejuju/data.dat", http_service:JSONEncode({
+                    writefile("bunny recode/data.dat", http_service:JSONEncode({
                         ["notifications"] = do_notifications,
                         ["favorites"] = menu["favorites"],
                         ["theme"] = menu["theme"],
@@ -2842,7 +2845,7 @@ do
         ["Color"] = color3_fromrgb(255, 0, 0),
         ["Transparency"] = 1,
         ["Rounding"] = 4,
-        ["Data"] = readfile("vhuylovejuju/assets/saturation.png"),
+        ["Data"] = readfile("bunny recode/assets/saturation.png"),
         ["ZIndex"] = 1001,
         ["Visible"] = true,
     })
@@ -5012,7 +5015,7 @@ do
                         new_options[#new_options + 1] = original_options[i]
                     end
 
-                    for _, file in listfiles("vhuylovejuju/custom") do
+                    for _, file in listfiles("bunny recode/custom") do
                         local extension = file:match("%.([^%.]+)$")
 
                         if extension then
@@ -5045,7 +5048,7 @@ do
                             new_options[#new_options + 1] = original_options[i]
                         end
     
-                        for _, file in listfiles("vhuylovejuju/custom") do
+                        for _, file in listfiles("bunny recode/custom") do
                             local extension = file:match("%.([^%.]+)$")
     
                             if extension then
@@ -6166,7 +6169,7 @@ do
         menu.get_config_list = function()
             local list = {}
 
-            local files = listfiles("vhuylovejuju/configs/")
+            local files = listfiles("bunny recode/configs/")
             for _, file in files do
                 if string["match"](file, "%.(.*)") == "cfg" then
                     list[#list+1] = string["sub"](file, 21, #file-4)
@@ -6179,7 +6182,7 @@ do
         menu.get_addon_list = function()
             local list = {}
 
-            local files = listfiles("vhuylovejuju/addons/")
+            local files = listfiles("bunny recode/addons/")
             for _, file in files do
                 if string["match"](file, "%.(.*)") == "luau" then
                     list[#list+1] = string["sub"](file, 20, #file-5)
@@ -6192,7 +6195,7 @@ do
         menu.get_skins_list = function()
             local list = {}
 
-            local files = listfiles("vhuylovejuju/custom/")
+            local files = listfiles("bunny recode/custom/")
             for _, file in files do
                 if string["match"](file, "%.(.*)") == "skin" then
                     list[#list+1] = string["sub"](file, 20, #file-5)
@@ -6205,7 +6208,7 @@ do
         menu.get_theme_list = function()
             local list = {}
 
-            local files = listfiles("vhuylovejuju/themes/")
+            local files = listfiles("bunny recode/themes/")
             for _, file in files do
                 if string["match"](file, "%.(.*)") == "th" then
                     list[#list+1] = string["sub"](file, 20, #file-3)
@@ -6263,7 +6266,7 @@ do
                 end
             end
 
-            writefile("vhuylovejuju/configs/"..name..".cfg", encrypt(http_service:JSONEncode(config), "^^^^^^^^^^^^^^^^^^^^"))
+            writefile("bunny recode/configs/"..name..".cfg", encrypt(http_service:JSONEncode(config), "^^^^^^^^^^^^^^^^^^^^"))
         end)
 
         menu["get_config_data"] = LPH_JIT(function(data)
@@ -6285,7 +6288,7 @@ do
                 return
             end
 
-            local path = "vhuylovejuju/configs/"..name..".cfg"
+            local path = "bunny recode/configs/"..name..".cfg"
 
             if isfile(path) then
                 local new_flags = menu["get_config_data"](readfile(path))
@@ -6674,7 +6677,7 @@ do
             end
 
             menu["load_addon"] = function(name)
-                local path = "vhuylovejuju/addons/"..name..".luau"
+                local path = "bunny recode/addons/"..name..".luau"
 
                 if not isfile(path) then
                     return "file does not exist"
@@ -6839,13 +6842,13 @@ do
             })
 
             create_connection(settings_section:create_element({
-                ["name"] = "unload juju",
+                ["name"] = "unload bunny",
             }, {
                 ["button"] = {
                     ["confirmation"] = true
                 },
             })["on_clicked"], function()
-                getgenv()["_JUJU"]()
+                getgenv()["_juju"]()
 
                 if (identifyexecutor() == "AWP" or identifyexecutor() == "Nihon") then
                     cleardrawcache()
@@ -7634,7 +7637,7 @@ do
             }, {
                 ["button"] = {}
             })["on_clicked"], function()
-                local file = "vhuylovejuju/themes/"..flags["!name"]..".th"
+                local file = "bunny recode/themes/"..flags["!name"]..".th"
                 local data = {}
 
                 local elements = theme_section["elements"]
@@ -7828,7 +7831,7 @@ do
 
         create_connection(config_list["on_selection_change"], function(config)
             local config = config or "AbbbbAzbbbbA12z"
-            local path = "vhuylovejuju/configs/"..config..".cfg"
+            local path = "bunny recode/configs/"..config..".cfg"
             local data = nil
             if isfile(path) then
                 data = menu["get_config_data"](readfile(path))
@@ -7935,7 +7938,7 @@ do
 
             if selected_config and tostring(selected_config) and #selected_config > 0 then
                 config_list:remove_item(selected_config)
-                delfile("vhuylovejuju/configs/"..selected_config..".cfg")
+                delfile("bunny recode/configs/"..selected_config..".cfg")
                 menu["new_notification"](
                     "successfully deleted config "..selected_config,
                     1
@@ -7989,7 +7992,7 @@ do
     -- > ( loading / unloading )
 
     do
-        local unload = getgenv()["_JUJU"]
+        local unload = getgenv()["_juju"]
 
         if unload then
             unload()
@@ -8011,8 +8014,8 @@ do
 
         getrawmetatable = env["getrawmetatable"]
 
-        env["_JUJU"] = function()
-            env["_JUJU"] = nil
+        env["_juju"] = function()
+            env["_juju"] = nil
 
             for _, group in menu["groups"] do
                 for _, tab in group["tabs"] do
@@ -8061,7 +8064,7 @@ do
         -- >> ( data )
 
         local s, data = pcall(function()
-            return http_service:JSONDecode(readfile("vhuylovejuju/data.dat"))
+            return http_service:JSONDecode(readfile("bunny recode/data.dat"))
         end)
 
         if s and data then
@@ -8094,7 +8097,7 @@ do
                 menu_references["config_list"]:add_icon(autoload_config, autoload)
             end
         else
-            writefile("vhuylovejuju/data.dat", http_service:JSONEncode({
+            writefile("bunny recode/data.dat", http_service:JSONEncode({
                 ["notifications"] = do_notifications,
                 ["favorites"] = {},
                 ["hide_on_load"] = false,
@@ -9631,7 +9634,7 @@ do
             end)
 
             create_connection(menu_references["trash_talk"]["on_toggle_change"], function(bool)
-                local path = "vhuylovejuju/custom/"..flags["trash_talk_list"][1]
+                local path = "bunny recode/custom/"..flags["trash_talk_list"][1]
                 if isfile(path) then 
                     local s, err = pcall(function()
                         trash_talk_list = http_service:JSONDecode(readfile(path))
@@ -9669,7 +9672,7 @@ do
             end)
 
             create_connection(menu_references["trash_talk_list"]["on_dropdown_change"], function(value)
-                local path = "vhuylovejuju/custom/"..flags["trash_talk_list"][1]
+                local path = "bunny recode/custom/"..flags["trash_talk_list"][1]
                 if isfile(path) then 
                     local s, err = pcall(function()
                         trash_talk_list = http_service:JSONDecode(readfile(path))
@@ -10410,7 +10413,7 @@ do
             end
             if do_kick then
                 local_player:Kick("[juju anti staff]\n > detected "..player.." roled as "..role)
-                delay(0, getgenv()["_JUJU"])
+                delay(0, getgenv()["_juju"])
             end
         end
     end
@@ -11301,7 +11304,8 @@ do
         local sounds = {
             ["windy winter"] = "rbxassetid://6046340391",
             ["light rain"] = "rbxassetid://18862087062",
-            ["thunderstorm"] = "rbxassetid://4305545740",
+            ["thunderstorm"] = "rbxassetid://9112853422",
+            ["raindrop"] = "rbxassetid://122813811029978",
             ["night"] = "rbxassetid://179507208",
             ["day"] = "rbxassetid://6189453706"
         }
@@ -11309,7 +11313,7 @@ do
 
         menu_references["background_noise"] = menu_references["lighting_section"]:create_element({["name"] = "background noise"}, {["toggle"] = {["flag"] = "background_noise"}})
             menu_references["background_noise_settings"] = menu_references["background_noise"]:create_settings()
-            menu_references["background_noise_sound"] = menu_references["background_noise_settings"]:create_element({["name"] = "sound"}, {["dropdown"] = {["flag"] = "background_noise_sound", ["requires_one"] = true, ["options"] = {"windy winter", "thunderstorm", "light rain", "night", "day"}, ["use_custom_extensions"] = {"mp3", "ogg", "wav"}, ["default"] = {"night"}}})
+            menu_references["background_noise_sound"] = menu_references["background_noise_settings"]:create_element({["name"] = "sound"}, {["dropdown"] = {["flag"] = "background_noise_sound", ["requires_one"] = true, ["options"] = {"windy winter", "thunderstorm", "light rain", "night", "day", " raindrop"}, ["use_custom_extensions"] = {"mp3", "ogg", "wav"}, ["default"] = {"raindrop"}}})
             menu_references["background_noise_volume"] = menu_references["background_noise_settings"]:create_element({["name"] = "volume"}, {["slider"] = {["flag"] = "background_noise_volume", ["min"] = 0, ["max"] = 100, ["default"] = 25, ["suffix"] = "%"}})
         
         create_connection(menu_references["background_noise"]["on_toggle_change"], function(value)
@@ -11343,7 +11347,7 @@ do
             local new_sound = sounds[value]
 
             if not new_sound then
-                local path = "vhuylovejuju/custom/"..value
+                local path = "bunny recode/custom/"..value
 
                 if isfile(path) then
                     local s, data = pcall(getcustomasset, path)
@@ -11588,7 +11592,7 @@ do
     end)
 
     local get_textures = LPH_JIT_MAX(function(value)
-        local path = "vhuylovejuju/custom/"..value
+        local path = "bunny recode/custom/"..value
 
         if isfile(path) then
             local s, data = pcall(function()
@@ -11925,7 +11929,7 @@ do
         local value = value[1]
 
         if not skyboxes[value] then
-            local new_skybox = game:GetObjects(getcustomasset("vhuylovejuju/custom/"..value))[1]
+            local new_skybox = game:GetObjects(getcustomasset("bunny recode/custom/"..value))[1]
             skyboxes[value] = new_skybox
         end
 
@@ -12258,7 +12262,7 @@ do
                     ["Transparency"] = 0,
                     ["ZIndex"] = 2,
                     ["Visible"] = true,
-                    ["Text"] = "vhuy",
+                    ["Text"] = "bunny",
                     ["Size"] = 12,
                     ["Font"] = 2,
                     ["Outline"] = true,
@@ -14000,13 +14004,13 @@ do
     local sound_service = cloneref(game:GetService("SoundService"))
 
     local hit_sounds = {
-        ["primordial"] = readfile("vhuylovejuju/assets/primordial.ogg"),
-        ["neverlose"] = readfile("vhuylovejuju/assets/neverlose.ogg"),
-        ["sparkle"] = readfile("vhuylovejuju/assets/sparkle.ogg"),
-        ["mc bow"] = readfile("vhuylovejuju/assets/mc bow.ogg"),
-        ["break"] = readfile("vhuylovejuju/assets/break.ogg"),
-        ["skeet"] = readfile("vhuylovejuju/assets/skeet.ogg"),
-        ["rust"] = readfile("vhuylovejuju/assets/rust.ogg"),
+        ["primordial"] = readfile("bunny recode/assets/primordial.ogg"),
+        ["neverlose"] = readfile("bunny recode/assets/neverlose.ogg"),
+        ["sparkle"] = readfile("bunny recode/assets/sparkle.ogg"),
+        ["mc bow"] = readfile("bunny recode/assets/mc bow.ogg"),
+        ["break"] = readfile("bunny recode/assets/break.ogg"),
+        ["skeet"] = readfile("bunny recode/assets/skeet.ogg"),
+        ["rust"] = readfile("bunny recode/assets/rust.ogg"),
     }
 
     for _, data in hit_sounds do
@@ -14045,7 +14049,7 @@ do
 
         if new_value and not hit_sound_data then
             local path = tostring({}):sub(math_random(8, 12))..".ogg"
-            writefile(path, readfile("vhuylovejuju/custom/"..new_value))
+            writefile(path, readfile("bunny recode/custom/"..new_value))
             local asset = getcustomasset(path)
             hit_sounds[new_value] = asset
             delfile(path)
@@ -14210,7 +14214,7 @@ do
             hit_particle = hit_particles[value]
 
             if not hit_particle then
-                local new_particle = game:GetObjects(getcustomasset("vhuylovejuju/custom/"..value))[1]
+                local new_particle = game:GetObjects(getcustomasset("bunny recode/custom/"..value))[1]
                 local children = get_children(new_particle)
                 local new_hit_particle = {}
                 for i = 1, #children do
@@ -14235,7 +14239,7 @@ do
     -- >> ( hit overlay )
 
     local hit_overlay_connection = nil
-    local data = readfile("vhuylovejuju/assets/1.png")
+    local data = readfile("bunny recode/assets/1.png")
 
     local hit_image = nil
     local last_hit = clock()
@@ -15488,7 +15492,7 @@ do
         local skins = menu["get_skins_list"]()
         for _, skin in skins do
             local s, data = pcall(function()
-                return http_service:JSONDecode(readfile("vhuylovejuju/custom/"..skin..".skin"))
+                return http_service:JSONDecode(readfile("bunny recode/custom/"..skin..".skin"))
             end)
 
             if s then
@@ -15651,7 +15655,7 @@ do
     -- >> ( local bullet sound )
 
     local sounds = {
-        ["sexy"] = readfile("vhuylovejuju/assets/sexy.ogg")
+        ["sexy"] = readfile("bunny recode/assets/sexy.ogg")
     }
 
     for _, data in sounds do
@@ -15675,7 +15679,7 @@ do
 
         if not local_bullet_data then
             local path = tostring({}):sub(math_random(8, 12))..".ogg"
-            writefile(path, readfile("vhuylovejuju/custom/"..value))
+            writefile(path, readfile("bunny recode/custom/"..value))
             local_bullet_data = getcustomasset(path)
             sounds[value] = local_bullet_data
             delfile(path)
@@ -15693,7 +15697,7 @@ do
     -- >> ( custom armor pop )
 
     local images = {
-        ["jaydes"] = readfile("vhuylovejuju/assets/jaydes.png"),
+        ["jaydes"] = readfile("bunny recode/assets/jaydes.png"),
     }
 
     for _, data in images do
@@ -15745,7 +15749,7 @@ do
         armor_pop_data = images[value]
 
         if not armor_pop_data then
-            local new_data = getcustomasset("vhuylovejuju/custom/"..value)
+            local new_data = getcustomasset("bunny recode/custom/"..value)
 
             images[value] = new_data
             armor_pop_data = new_data
@@ -17840,7 +17844,7 @@ do
             image_data = selected == "gradient fill" and "iVBORw0KGgoAAAANSUhEUgAAAAEAAABkCAYAAABHLFpgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABTSURBVChTdU/LDsAwCGJu1/3/59rUC5HAhaA8bNHdfwF4LrwbagN3wgakwMVc4ttCTLhxmKjOIma5S5VfiC0TE180R8aRIAJvuJfGGHcsoHoZ6gCUSgTCpTUDpwAAAABJRU5ErkJggg==" or selected == "fill" and "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAMSURBVBhXY/j//z8ABf4C/qc1gYQAAAAASUVORK5CYII=" or ""
 
             if image_data == "" then
-                local path = "vhuylovejuju/custom/"..selected
+                local path = "bunny recode/custom/"..selected
 
                 if isfile(path) then
                     image_data = readfile(path)
@@ -18562,7 +18566,7 @@ do
 
     local get_file_description = function(value)
         local value = value or flags["custom_character_file"][1]
-        local file = "vhuylovejuju/custom/"..value
+        local file = "bunny recode/custom/"..value
 
         if isfile(file) then
             return game:GetObjects(getcustomasset(file))[1]
@@ -18966,7 +18970,7 @@ do
             if particle_auras[value] then
                 particle_aura = particle_auras[value]
             else
-                local path = "vhuylovejuju/custom/"..value
+                local path = "bunny recode/custom/"..value
 
                 if isfile(path) then
                     local obj = game:GetObjects(getcustomasset(path))[1]
@@ -19102,7 +19106,7 @@ do
         menu_references["auto_fire_at_backtrack"] = menu_references["auto_fire_settings"]:create_element({["name"] = "at backtrack"}, {["toggle"] = {["flag"] = "auto_fire_at_backtrack", ["default"] = false}})
         menu_references["auto_fire_wall_bang"] = menu_references["auto_fire_settings"]:create_element({["name"] = "wall bang"}, {["toggle"] = {["flag"] = "auto_fire_wall_bang", ["default"] = false}})
         menu_references["auto_fire_always_fire"] = menu_references["auto_fire_settings"]:create_element({["name"] = "always fire"}, {["toggle"] = {["flag"] = "auto_fire_always_fire", ["default"] = true}})
-        --menu_references["auto_fire_dont_render"] = menu_references["auto_fire_settings"]:create_element({["name"] = "dont render"}, {["toggle"] = {["flag"] = "auto_fire_dont_render", ["default"] = false}})
+        menu_references["auto_fire_dont_render"] = menu_references["auto_fire_settings"]:create_element({["name"] = "dont render"}, {["toggle"] = {["flag"] = "auto_fire_dont_render", ["default"] = false}})
         menu_references["auto_equip"] = menu_references["general_section"]:create_element({["name"] = "auto equip"}, {["toggle"] = {["flag"] = "auto_equip", ["default"] = false}})
         menu_references["auto_equip_settings"] = menu_references["auto_equip"]:create_settings()
         menu_references["auto_equip_unequip_when"] = menu_references["auto_equip_settings"]:create_element({["name"] = "unequip when"}, {["dropdown"] = {["flag"] = "auto_equip_unequip_when", ["default"] = {"no target"}, ["options"] = {"no target"}, ["multi"] = true}})
@@ -19879,7 +19883,7 @@ do
                                 last_fire = clock()
                                 setthreadidentity(8)
                                 getfenv(shoot)["require"] = require
-                                --[[if not flags["auto_fire_dont_render"] then
+                                if not flags["auto_fire_dont_render"] then
                                     shoot({
                                         Shooter = local_character,
                                         Handle = handle,
@@ -19888,7 +19892,7 @@ do
                                         BeamColor = color3_fromrgb(1, 0.545098, 0.14902),
                                         Range = local_gun[2]
                                     })
-                                end]]
+                                end
 
                                 local dir = (pos-origin)
                                 local Magnitude = dir["Magnitude"]
@@ -22565,7 +22569,7 @@ do
     -- > ( control )
 
     --[[do
-        local path = "vhuylovejuju/controllers.json"
+        local path = "bunny recode/controllers.json"
         local current_controllers = {}
         local controller_user_ids = {}
         local connections = {}
@@ -24657,7 +24661,7 @@ do
 
         create_connection(addon_list["on_selection_change"], function(addon)
             local addon = addon or ""
-            local path = "vhuylovejuju/addons/"..addon..".luau"
+            local path = "bunny recode/addons/"..addon..".luau"
 
             if addon ~= "" and isfile(path) then
                 if addon_data[addon] then
@@ -25053,7 +25057,7 @@ do
                 return
             end
 
-            if isfile("vhuylovejuju/configs/"..string..".cfg") then
+            if isfile("bunny recode/configs/"..string..".cfg") then
                 menu["load_config"](string)
             else
                 error("juju: load_config expected string got "..type)
@@ -25447,8 +25451,8 @@ do
                     local background = flags["custom_kick_screen_background"]
                     local create_fake_drawing = getgenv()["_PROXY"]["new"]
                     local color = flags["custom_kick_screen_color"]
-                    local path = "vhuylovejuju/"..(background == "2.png" and "assets/2.png" or "custom/"..background)
-                    local data = isfile(path) and readfile(path) or readfile("vhuylovejuju/assets/2.png")
+                    local path = "bunny recode/"..(background == "2.png" and "assets/2.png" or "custom/"..background)
+                    local data = isfile(path) and readfile(path) or readfile("bunny recode/assets/2.png")
                     local message_label = error["MessageArea"]["ErrorFrame"]["ErrorMessage"]
                     local message = error["MessageArea"]["ErrorFrame"]["ErrorMessage"]
                     error["Visible"] = false
@@ -25487,7 +25491,7 @@ do
                         ["Color"] = color3_fromrgb(255, 255, 255),
                         ["Size"] = udim2_new(0, 100, 0, 100),
                         ["Position"] = udim2_new(0.5, -50, 0.45, -50),
-                        ["Data"] = readfile("vhuylovejuju/assets/logo.png"),
+                        ["Data"] = readfile("bunny recode/assets/logo.png"),
                         ["Transparency"] = 0,
                         ["Parent"] = background,
                         ["Visible"] = true,
@@ -25666,7 +25670,7 @@ do
     end))
 
     local autoload = menu["autoload"]
-    if autoload and isfile("vhuylovejuju/configs/"..autoload..".cfg") then
+    if autoload and isfile("bunny recode/configs/"..autoload..".cfg") then
         spawn(menu["load_config"], autoload)
         menu["new_notification"]("autoloaded config "..autoload, 1)
     end
