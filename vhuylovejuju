@@ -300,7 +300,7 @@ local menu = {
 	    ["error"] = color3_fromrgb(255, 170, 210),
 	    ["alert"] = color3_fromrgb(120, 80, 120),
 	    ["logo"] = color3_fromrgb(254, 230, 254),
-	    ["juju"] = color3_fromrgb(254, 230, 254),
+	    ["bunny"] = color3_fromrgb(254, 230, 254),
 	    ["build"] = color3_fromrgb(254, 230, 254),
 	    ["cursor"] = color3_fromrgb(254, 230, 254),
 	},
@@ -6805,13 +6805,13 @@ do
             })
 
             create_connection(settings_section:create_element({
-                ["name"] = "unload juju",
+                ["name"] = "unload bunny",
             }, {
                 ["button"] = {
                     ["confirmation"] = true
                 },
             })["on_clicked"], function()
-                getgenv()["_JUJU"]()
+                getgenv()["_bunny"]()
 
                 if identifyexecutor() == "AWP" then
                     cleardrawcache()
@@ -6867,13 +6867,13 @@ do
                 ["name"] = "juju color",
             }, {
                 ["colorpicker"] = {
-                    ["default_color"] = menu["colors"]["juju"],
+                    ["default_color"] = menu["colors"]["bunny"],
                     ["default_transparency"] = 0,
                     ["transparency_flag"] = "!juju_transparency",
                     ["color_flag"] = "!juju_color"
                 }
             })["on_color_change"], function(color)
-                menu["colors"]["juju"] = color
+                menu["colors"]["bunny"] = color
                 juju_text["Color"] = color
             end)
 
@@ -7955,7 +7955,7 @@ do
     -- > ( loading / unloading )
 
     do
-        local unload = getgenv()["_JUJU"]
+        local unload = getgenv()["_bunny"]
 
         if unload then
             unload()
@@ -7977,8 +7977,8 @@ do
 
         getrawmetatable = env["getrawmetatable"]
 
-        env["_JUJU"] = function()
-            env["_JUJU"] = nil
+        env["_bunny"] = function()
+            env["_bunny"] = nil
 
             for _, group in menu["groups"] do
                 for _, tab in group["tabs"] do
@@ -10701,7 +10701,7 @@ do
                 local crew = find_first_child(information, "Crew")
 
                 if crew and #crew["Value"] ~= 0 then
-                    setclipboard("https://www.roblox.com/communities/"..crew["Value"].."#!/juju")
+                    setclipboard("https://www.roblox.com/communities/"..crew["Value"].."#!/bunny")
 
                     new_notification(
                         "copied "..selected_player["Name"].."'s crew group link to your clipboard",
@@ -10719,7 +10719,7 @@ do
 
     create_connection(player_editor:create_element({["name"] = "copy profile link"}, {["button"] = {}})["on_clicked"], function()
         if selected_player then
-            setclipboard("https://www.roblox.com/users/"..selected_player["UserId"].."/profile#!/juju")
+            setclipboard("https://www.roblox.com/users/"..selected_player["UserId"].."/profile#!/bunny")
             new_notification(
                 "copied "..selected_player["Name"].."'s profile link to your clipboard",
                 1
@@ -14099,7 +14099,7 @@ do
         delfile(path)
     end
 
-    local hit_sound_data = hit_sounds["juju"]
+    local hit_sound_data = hit_sounds["bunny"]
 
     local do_hit_sound = function()
         delay(0, destroy, create_instance("Sound", {
@@ -22799,7 +22799,7 @@ do
     local typeof = typeof
     local g = menu["get_active_binds"]
 
-    getgenv()["juju"] = {
+    getgenv()["bunny"] = {
         create_connection = function(signal, callback)
             local type = typeof(signal)
 
