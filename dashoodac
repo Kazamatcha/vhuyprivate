@@ -1,0 +1,36 @@
+local GameInformation = loadstring(game:HttpGet("https://raw.githubusercontent.com/TheRealXORA/Roblox/refs/heads/Main/Scripts%20/Utilities%20/Fetch%20Game%20Information.luau", true))()
+if not GameInformation.Name:find("SCP D.A.S") then return end
+local Players = game:GetService("Players")
+local FindArguments = {"96f20d82036c9eda563fdbf638a7732e18ff7293139ed239a6ff642299e37e4b", "b683de94dcc3dee98f2883068d3265b099f0780274daf82ce52639b05b757b32", "20b989423909d3fb5479b14c35f9bdbdff737903a9c0d6de7460b178e40ea2dc"}
+for _, Collected in getgc() do
+    if typeof(Collected) ~= "function" then continue end
+    local Info = debug.getinfo(Collected)
+    local Name = Info and Info.name
+    
+    if Name then
+        if Name == "CompareShootingCooldowns" then 
+            hookfunction(Collected, function(...) end)
+        elseif Name == "DoWarningStuff" then
+            hookfunction(Collected, function() return true end)
+        end
+    end
+end
+local OriginalNameCall; OriginalNameCall = hookmetamethod(game, "__namecall", newcclosure(function(Object, ...)
+    local Arguments = {...}
+    local Method = getnamecallmethod()
+    
+    if Method == "FireServer" and Object.Name == "MainEvent" and table.find(FindArguments, Arguments[1]) then
+        return
+    end
+    
+    if not checkcaller() and Method == "Kick" and Object == Players.LocalPlayer then
+        return
+    end
+    return OriginalNameCall(Object, ...)
+end))
+local OriginalNewIndex; OriginalNewIndex = hookmetamethod(game, "__newindex", newcclosure(function(Object, Key, Value)
+    if not checkcaller() and Key == "Name" and tostring(Object.Parent) == "Ugc" then
+        return OriginalNewIndex(Object, Key, Object.ClassName)
+    end
+    return OriginalNewIndex(Object, Key, Value)
+end))
