@@ -607,13 +607,14 @@ do
 		local notification = {}
 		notification["__index"] = notification
 
-		menu["new_notification"] = function(text, type, time, data)
+		menu["new_notification"] = function(text, time, data)
 			if do_notifications then
-				local color = typeof(time) == "Color3" and time
+				local color = colors["accent"] 
+                    --[[typeof(time) == "Color3" and time
 					or (type == 1 and colors["accent"])
 					or (type == 2 and colors["accent"])
 					or (type == 3 and colors["accent"])
-					or colors["accent"]
+					or colors["accent"]]]
 				local inside = drawing_proxy["new"]("Image", {
 					["Data"] = pixel_image_data,
 					["Rounding"] = 7,
