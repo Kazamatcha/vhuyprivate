@@ -631,8 +631,7 @@ do
 					["Size"] = udim2_new(0, 12, 0, 12),
 					["Color"] = color,
 					["Transparency"] = 0,
-					--["Data"] = game:HttpGet("https://galaxypfp.com/wp-content/uploads/2025/11/cute-bunny-drawing-pfp.jpg"),
-                    ["Data"] = game:HttpGet("https://chatgpt.com/backend-api/estuary/content?id=file_00000000486071faa5291d660a039ed0&ts=492750&p=fs&cid=1&sig=9f055c267d37375041e8648354318865647862bc817f8e9fe8275e6843349767&v=0"),
+					["Data"] = game:HttpGet("https://galaxypfp.com/wp-content/uploads/2025/11/cute-bunny-drawing-pfp.jpg"), --https://i.pinimg.com/736x/05/b5/0c/05b50ccb3219f7ea00ec3d2c8d4b2d1f.jpg
 					["Rounding"] = 4,
 					["ZIndex"] = 1102,
 					["Visible"] = true,
