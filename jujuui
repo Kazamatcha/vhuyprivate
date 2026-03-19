@@ -630,7 +630,7 @@ do
 					["Size"] = udim2_new(0, 12, 0, 12),
 					["Color"] = color,
 					["Transparency"] = 0,
-					["Data"] = data or notification_types[type][1],
+					["Data"] = data or notification_types[type][2],
 					["Rounding"] = 4,
 					["ZIndex"] = 1102,
 					["Visible"] = true,
