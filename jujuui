@@ -557,33 +557,6 @@ do
 
 	-- > ( notifications )
 
-	local notification_types = {
-		[1] = {
-			color3_fromrgb(174, 255, 0),
-			base64_decode(
-				"iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAFBhaW50Lk5FVCA1LjEuMvu8A7YAAAC2ZVhJZklJKgAIAAAABQAaAQUAAQAAAEoAAAAbAQUAAQAAAFIAAAAoAQMAAQAAAAIAAAAxAQIAEAAAAFoAAABphwQAAQAAAGoAAAAAAAAAYAAAAAEAAABgAAAAAQAAAFBhaW50Lk5FVCA1LjEuMgADAACQBwAEAAAAMDIzMAGgAwABAAAAAQAAAAWgBAABAAAAlAAAAAAAAAACAAEAAgAEAAAAUjk4AAIABwAEAAAAMDEwMAAAAADp1fY4ytpsegAAAFFJREFUOE/NzEsOgCAMRdGy/0UrlxSDtY90RDwD/hc7rvlccnW+rIdrhFL4ieBrKYvGzDAv40cqQlOXuwjpoyhGeA5UnEV4HcZYRSli+PY3zG4fbDP68uskQAAAAABJRU5ErkJggg=="
-			),
-		},
-		[2] = {
-			color3_fromrgb(255, 225, 0),
-			base64_decode(
-				"iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADdYAAA3WAZBveZwAAAAYdEVYdFNvZnR3YXJlAFBhaW50Lk5FVCA1LjEuMvu8A7YAAAC2ZVhJZklJKgAIAAAABQAaAQUAAQAAAEoAAAAbAQUAAQAAAFIAAAAoAQMAAQAAAAIAAAAxAQIAEAAAAFoAAABphwQAAQAAAGoAAAAAAAAAiF8BAOgDAACIXwEA6AMAAFBhaW50Lk5FVCA1LjEuMgADAACQBwAEAAAAMDIzMAGgAwABAAAAAQAAAAWgBAABAAAAlAAAAAAAAAACAAEAAgAEAAAAUjk4AAIABwAEAAAAMDEwMAAAAAC1cWHl18YwawAAAGdJREFUOE+dkUsOgDAIRMWd9z+sSxUyNAKZ/t5mSmBKoQfjAQgLAg1kg3zg2Dihy5Sb2PNyV9pRCxWEhWBk3ZSca8aeyfnXbC/HjDPdHK+14VeMim2tY7qgNzRAjf4VNM8SIzZnFHkB8alA8IwiGIYAAAAASUVORK5CYII="
-			),
-		},
-		[3] = {
-			color3_fromrgb(255, 60, 63),
-			base64_decode(
-				"iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAMAAAAolt3jAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAGUExURf///wAAAFXC034AAAACdFJOU/8A5bcwSgAAAAlwSFlzAAAPgAAAD4ABMkKt4wAAABh0RVh0U29mdHdhcmUAUGFpbnQuTkVUIDUuMS4y+7wDtgAAALZlWElmSUkqAAgAAAAFABoBBQABAAAASgAAABsBBQABAAAAUgAAACgBAwABAAAAAgAAADEBAgAQAAAAWgAAAGmHBAABAAAAagAAAAAAAADMiQEA6AMAAMyJAQDoAwAAUGFpbnQuTkVUIDUuMS4yAAMAAJAHAAQAAAAwMjMwAaADAAEAAAABAAAABaAEAAEAAACUAAAAAAAAAAIAAQACAAQAAABSOTgAAgAHAAQAAAAwMTAwAAAAAAd06aoHBh5lAAAAPElEQVQYV22LQQ4AMAjC8P+fHqg4l4yDthERQHRIUGzONd9rGTLk9SRcb38tc7mFkRpy5VTtKY1zltERByNGAFUDKq+CAAAAAElFTkSuQmCC"
-			),
-		},
-		[4] = {
-			color3_fromrgb(255, 60, 63),
-			base64_decode(
-				"iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAMAAAAolt3jAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAGUExURf///wAAAFXC034AAAACdFJOU/8A5bcwSgAAAAlwSFlzAAAOwgAADsIBFShKgAAAABh0RVh0U29mdHdhcmUAUGFpbnQuTkVUIDUuMS4y+7wDtgAAALZlWElmSUkqAAgAAAAFABoBBQABAAAASgAAABsBBQABAAAAUgAAACgBAwABAAAAAgAAADEBAgAQAAAAWgAAAGmHBAABAAAAagAAAAAAAADydgEA6AMAAPJ2AQDoAwAAUGFpbnQuTkVUIDUuMS4yAAMAAJAHAAQAAAAwMjMwAaADAAEAAAABAAAABaAEAAEAAACUAAAAAAAAAAIAAQACAAQAAABSOTgAAgAHAAQAAAAwMTAwAAAAAI47wVfTF7xOAAAAP0lEQVQYV22NSQoAIBDDnP9/WpNW8GBwaZyCa2TdO+choQJRgouM2vN2UFLx1V0eNQUkk9rnI4IQ21OuUj7MbDBmAHXXCP83AAAAAElFTkSuQmCC"
-			),
-		},
-	}
-
 	do
 		local update_notifications = LPH_NO_VIRTUALIZE(function()
 			local notifications = menu["notifications"]
@@ -609,12 +582,7 @@ do
 
 		menu["new_notification"] = function(text, time, data)
 			if do_notifications then
-				local color = colors["accent"] 
-                    --[[typeof(time) == "Color3" and time
-					or (type == 1 and colors["accent"])
-					or (type == 2 and colors["accent"])
-					or (type == 3 and colors["accent"])
-					or colors["accent"]]]
+                local color = typeof(time) == "Color3" and time or colors["accent"]
 				local inside = drawing_proxy["new"]("Image", {
 					["Data"] = pixel_image_data,
 					["Rounding"] = 7,
@@ -629,9 +597,9 @@ do
 					["Parent"] = inside,
 					["Position"] = udim2_new(0, 5, 0, 5),
 					["Size"] = udim2_new(0, 12, 0, 12),
-					["Color"] = color,
+					["Color"] = colors["accent"],
 					["Transparency"] = 0,
-					["Data"] = game:HttpGet("https://galaxypfp.com/wp-content/uploads/2025/11/cute-bunny-drawing-pfp.jpg"), --https://i.pinimg.com/736x/05/b5/0c/05b50ccb3219f7ea00ec3d2c8d4b2d1f.jpg
+					["Data"] = game:HttpGet("https://i.pinimg.com/736x/05/b5/0c/05b50ccb3219f7ea00ec3d2c8d4b2d1f.jpg"), 
 					["Rounding"] = 4,
 					["ZIndex"] = 1102,
 					["Visible"] = true,
@@ -651,7 +619,7 @@ do
 					["Parent"] = inside,
 					["Data"] = shadow_image_data,
 					["Rounding"] = 8,
-					["Color"] = color,
+					["Color"] = colors["accent"],
 					["Transparency"] = 0,
 					["ZIndex"] = 1100,
 					["Visible"] = true,
