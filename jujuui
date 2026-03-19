@@ -606,7 +606,7 @@ do
 		local notification = {}
 		notification["__index"] = notification
 
-		menu["new_notification"] = function(text, type, time, data)
+		menu["new_notification"] = function(text, time, type, data)
 			if do_notifications then
 				local color = typeof(time) == "Color3" and time
 					or (type == 1 and colors["success"])
@@ -629,7 +629,7 @@ do
 					["Size"] = udim2_new(0, 12, 0, 12),
 					["Color"] = colors["accent"],
 					["Transparency"] = 0,
-					["Data"] = data or notification_types[type][3],
+					["Data"] = data or notification_types[type][1],
 					["Rounding"] = 4,
 					["ZIndex"] = 1102,
 					["Visible"] = true,
