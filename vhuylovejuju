@@ -23401,7 +23401,7 @@ do
     local username = "?"
     local avatar = nil
 
-    local LRM_LinkedDiscordID = LRM_LinkedDiscordID or "320421345324433418"
+    local LRM_LinkedDiscordID = LRM_LinkedDiscordID or "1111118392171184149"
     if LRM_LinkedDiscordID then
         local s, data = pcall(function()
             local body = request({
