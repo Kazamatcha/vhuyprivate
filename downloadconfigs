@@ -17,7 +17,10 @@ do
 	        url = "https://raw.githubusercontent.com/Kazamatcha/vhuyprivate/refs/heads/main/kingbunnylegit.cfg",
 	        name = "kingbunnylegit.cfg"
 	    },
-	
+		{
+	        url = "https://raw.githubusercontent.com/Kazamatcha/vhuyprivate/refs/heads/main/bunnyrage.cfg",
+	        name = "bunnyrage.cfg"
+	    },
 	    -- sau này chỉ cần thêm ở đây
 	    --{
 	    --    url = "LINK_RAW_FILE",
