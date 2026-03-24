@@ -19252,6 +19252,7 @@ do
         menu_references["auto_heal_purchase_if_below"] = menu_references["auto_heal_settings"]:create_element({["name"] = "purchase if below"}, {["slider"] = {["flag"] = "auto_heal_purchase_if_below", ["min"] = 0, ["max"] = 100, ["default"] = 70, ["suffix"] = "%"}})
         menu_references["auto_heal_try_cooldown"] = menu_references["auto_heal_settings"]:create_element({["name"] = "try cooldown"}, {["slider"] = {["flag"] = "auto_heal_try_cooldown", ["min"] = 0, ["max"] = 2, ["default"] = 0.05, ["decimals"] = 2, ["suffix"] = "s"}})
         menu_references["anti_taser"] = menu_references["utility_section"]:create_element({["name"] = "anti taser"}, {["toggle"] = {["flag"] = "anti_taser"}})
+        menu_references["anti_bag"] = menu_references["utility_section"]:create_element({["name"] = "anti bag"}, {["toggle"] = {["flag"] = "anti_bag"}})
         menu_references["rapid_fire"] = menu_references["utility_section"]:create_element({["name"] = "rapid fire"}, {["toggle"] = {["flag"] = "rapid_fire", ["default"] = false}})
         --[[
         menu_references["control"] = menu_references["utility_section"]:create_element({["name"] = "control"}, {["toggle"] = {["flag"] = "control", ["default"] = false}})
@@ -21199,6 +21200,80 @@ do
             end
         end)
     end
+
+    -- >> ( anti bag )
+
+	do
+		local run_service = cloneref(game:GetService("RunService"))
+		local void_cframe = CFrame.new(0/0, 0/0, 0/0)
+	
+		local function checkAntiBag(dt, hrp_local)
+			if not flags["anti_bag"] then
+				return
+			end
+	
+			local my_char = local_player.Character
+			if not my_char or not my_char:FindFirstChild("HumanoidRootPart") then
+				return
+			end
+	
+			local workspace_players = workspace:FindFirstChild("Players")
+			if not workspace_players then return end
+	
+			local voided = false
+			for _, plr in pairs(players_service:GetPlayers()) do
+				if plr ~= local_player then
+					local char = workspace_players:FindFirstChild(plr.Name) or plr.Character
+					if char and char:FindFirstChild("HumanoidRootPart") then
+						local holding_bag = char:FindFirstChild("[BrownBag]")
+						if holding_bag then
+							local dist = (char.HumanoidRootPart.Position - my_char.HumanoidRootPart.Position).Magnitude
+							if dist <= 25 then
+								local hum = char:FindFirstChildOfClass("Humanoid")
+								if hum then
+									for _, track in pairs(hum:GetPlayingAnimationTracks()) do
+										if track.Animation and tostring(track.Animation.AnimationId):find("3493406987") then
+											voided = true
+											break
+										end
+									end
+								end
+							end
+						end
+					end
+				end
+				if voided then break end
+			end
+	
+			if voided then
+				local hrp = my_char:FindFirstChild("HumanoidRootPart")
+				if hrp then
+					local saved_position = hrp.CFrame
+					hrp.CFrame = void_cframe
+	
+					run_service:BindToRenderStep("RestoreAntiBag", 199, function()
+						if hrp and hrp.Parent then
+							hrp.CFrame = saved_position
+						end
+						run_service:UnbindFromRenderStep("RestoreAntiBag")
+					end)
+				end
+			end
+		end
+	
+		create_connection(menu_references["anti_bag"]["on_toggle_change"], function(value)
+			if value then
+				heartbeat[#heartbeat + 1] = checkAntiBag
+			else
+				for i = 1, #heartbeat do
+					if heartbeat[i] == checkAntiBag then
+						remove(heartbeat, i)
+						break
+					end
+				end
+			end
+		end)
+	end
 
     -- >> ( auto armor )
 
