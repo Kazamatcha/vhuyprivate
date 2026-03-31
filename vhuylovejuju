@@ -333,7 +333,7 @@ do
                 ["1.png"] = function() return game:HttpGet("https://github.com/Kazamatcha/jujuui/raw/refs/heads/main/1.png") end,
                 ["2.png"] = function() return game:HttpGet("https://github.com/Kazamatcha/jujuui/raw/refs/heads/main/2.png") end,
                 --["logobn.png"] = function() return game:HttpGet("https://github.com/Kazamatcha/vhuyprivate/raw/refs/heads/main/logobn.png") end,
-                ["logobn.png"] = function() return game:HttpGet("https://github.com/Kazamatcha/vhuyprivate/raw/refs/heads/main/bunnybn.png") end,
+                ["logobn.png"] = function() return game:HttpGet("https://github.com/Kazamatcha/vhuyprivate/raw/refs/heads/main/logobn.png") end,
                 ["saturation.png"] = function() return game:HttpGet("https://github.com/Kazamatcha/jujuui/raw/refs/heads/main/saturation.png") end,
             },
             ["custom"] = {
