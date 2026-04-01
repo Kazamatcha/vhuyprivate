@@ -455,7 +455,7 @@ if not keyCheckPassed then
 
     discordButton.MouseButton1Click:Connect(function()
         pcall(function()
-            setclipboard("https://discord.gg/zyz8duUj9c")
+            setclipboard("https://discord.gg/TjU9xYhsQz")
         end)
         setStatus("Discord invite copied!", Color3.fromRGB(130, 145, 255), Color3.fromRGB(130, 145, 255))
         task.wait(2)
