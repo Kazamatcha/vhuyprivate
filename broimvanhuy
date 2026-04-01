@@ -149,7 +149,7 @@ if not keyCheckPassed then
     versionLabel.TextColor3 = Color3.fromRGB(228, 174, 174)
     versionLabel.TextSize = 9
     versionLabel.Font = Enum.Font.GothamBold
-    versionLabel.Text = "v0.0.67"
+    versionLabel.Text = "v0.1"
     versionLabel.Parent = topBar
 
     local versionCorner = Instance.new("UICorner")
