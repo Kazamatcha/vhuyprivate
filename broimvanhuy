@@ -15,7 +15,7 @@ local function loadSavedKey()
 end
 
 local savedKey = loadSavedKey()
-if savedKey and savedKey == "brovanhuyisgoatbrovanhuyisgoattrustme" then
+if savedKey and savedKey == "ilovebunnyandevade" then
     keyCheckPassed = true
 end
 
@@ -427,7 +427,7 @@ if not keyCheckPassed then
         checkKeyButton.Text = "..."
         task.wait(0.5)
 
-        if enteredKey == "brovanhuyisgoatbrovanhuyisgoattrustme" then
+        if enteredKey == "ilovebunnyandevade" then
             keyCheckPassed = true
             pcall(saveKey, enteredKey)
 
