@@ -15,7 +15,7 @@ local function loadSavedKey()
 end
 
 local savedKey = loadSavedKey()
-if savedKey and savedKey == "ilovebunnyandevade" then
+if savedKey and savedKey == "imissevadee" then
     keyCheckPassed = true
 end
 
