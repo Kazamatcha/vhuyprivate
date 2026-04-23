@@ -427,7 +427,7 @@ if not keyCheckPassed then
         checkKeyButton.Text = "..."
         task.wait(0.5)
 
-        if enteredKey == "ilovebunnyandevade" then
+        if enteredKey == "imissevadee" then
             keyCheckPassed = true
             pcall(saveKey, enteredKey)
 
