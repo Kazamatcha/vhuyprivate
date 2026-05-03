@@ -119,7 +119,7 @@ end)
 local keyCheckPassed = false
 
 -- Key file management
-local KEY_FILE = "flick_key.txt"
+local KEY_FILE = "Rivals_key.txt"
 
 local function saveKey(key)
     writefile(KEY_FILE, key)
