@@ -1,5 +1,5 @@
 do
-	local mainFolder = "juju recode"
+	local mainFolder = "matcha latte"
 	local configFolder = mainFolder.."/configs"
 	
 	-- tạo folder nếu chưa có
