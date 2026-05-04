@@ -1,5 +1,5 @@
 do
-	local mainFolder = "bunny win"
+	local mainFolder = "bunnyyy win"
 	local configFolder = mainFolder.."/configs"
 	
 	-- tạo folder nếu chưa có
